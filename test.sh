@@ -266,6 +266,7 @@ let "sred += $res"
 elif [ $res -gt 700 ]
 then
 echo "Test result on $from..$to randoms: \033[36m$res\033[m   4️⃣  ❕  5️⃣     ✅  ✅  ✅  ✅"
+echo "$ARG"
 let "sred += $res"
 elif [ $res -gt 0 ]
 then
@@ -293,6 +294,7 @@ let "sred += $res"
 elif [ $res -gt 5500 ]
 then
 echo "Test result on $from..$to randoms: \033[36m$res\033[m   4️⃣  ❕  5️⃣     ✅  ✅  ✅  ✅"
+echo "$ARG"
 let "sred += $res"
 elif [ $res -gt 0 ]
 then
@@ -304,6 +306,7 @@ then
 if [ $res -gt 12 ]
 then
 echo "Test result on $from..$to randoms: \033[36m$res\033[m    ❌"
+echo "$ARG"
 else
 echo "Test result on $from..$to randoms: \033[36m$res\033[m    ✅"
 fi
@@ -331,6 +334,7 @@ if [ $dif -eq 100 ]
     elif [ $koef -gt 700 ]
     then
     echo "\nMiddle value: \033[33m$koef\033[m   Grade is :  4️⃣      ✅  ✅  ✅  ✅"
+
     elif [ $koef -gt 0 ]
     then
     echo "\nMiddle value: \033[33m$koef\033[m   Grade is :  5️⃣      ✅  ✅  ✅  ✅  ✅"

@@ -478,26 +478,7 @@ int semiSort(t_arrs *arrs)
 	return (0);
 
 }
-int semiSort5(t_arrs *arrs)
-{
-	int i;
 
-	i = 0;
-	while (i < arrs->lenA - 1)
-	{
-		if (arrs->a[i] == arrs->maxAl && arrs->a[i + 1] == arrs->minAl)
-		{
-
-		}
-		else if (arrs->a[i] > arrs->a[i + 1])
-		{
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-
-}
 
 //  min <  arrs->a < mid отсутствуют
 int done1(t_arrs *arrs)
@@ -519,13 +500,6 @@ int done1(t_arrs *arrs)
 	return flag;
 }
 
-
-
-
-
-
-
-
 int		sort(t_arrs *arrs)
 {	
 	while (done1(arrs))
@@ -535,8 +509,8 @@ int		sort(t_arrs *arrs)
 		else
 			ra(arrs);
 	}
-	// printf("1 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
+	printf("1 STATE%d\n", checkSort(arrs));
+	show_arrays(arrs);
 	while (arrs->lenA != 3)
 	{
 		if (arrs->a[0] > arrs->midA && arrs->a[0] < arrs->maxA)
@@ -544,25 +518,14 @@ int		sort(t_arrs *arrs)
 		else
 			ra(arrs);
 	}
-	// printf("2 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-	while (1 == 1)
+	printf("2 STATE%d\n", checkSort(arrs));
+	show_arrays(arrs);
+	if (semiSort(arrs) != 0)
 	{
-		if (arrs->a[0] == arrs->midA)
-		{
-			if (arrs->a[1] != arrs->maxA)
-			{
-				sa(arrs);
-				break ;
-			}
-			else
-				break ;
-		}
-		else
-			ra(arrs);
+		sa(arrs);
 	}
-	// printf("3 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
+	printf("3 STATE%d\n", checkSort(arrs));
+	show_arrays(arrs);
 	while (arrs->lenB > 0)
 	{
 		if (arrs->b[0] < arrs->a[0] && arrs->b[0] > arrs->a[arrs->lenA - 1])
@@ -570,11 +533,9 @@ int		sort(t_arrs *arrs)
 		else
 			rotate(arrs);	
 	}
-	// printf("4 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-	// LastB(arrs);
-	// printf("5 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
+	printf("4 STATE%d\n", checkSort(arrs));
+	show_arrays(arrs);
+
 	while (checkSort(arrs) != 0)
 	{
 		if (checkSort(arrs) == 1)
@@ -582,127 +543,13 @@ int		sort(t_arrs *arrs)
 		else
 			rra(arrs);
 	}
-
+	printf("5 STATE%d\n", checkSort(arrs));
+	show_arrays(arrs);
 	return (0);
 }
 
-int sort5v2(t_arrs *arrs)
-{
-	int i = 0;
-	int j = arrs->lenA;
-	while (semiSort(arrs) != 0)
-	{
-		if (1 == 1)
-		{
-			if (arrs->a[0] > arrs->a[1] && i <= j - 2)
-			{
-				ra(arrs);
-				i++;
-				pb(arrs);
-				rra(arrs);
-				i--;
-				while ((arrs->b[0] > arrs->a[0] || arrs->b[0] < arrs->a[arrs->lenA - 1]) && i > 0)
-				{
-					rra(arrs);
-					i--;
-				}
-				pa(arrs);
-			}
-		}
-		if (i <= j - 2)
-		{
-			ra(arrs);
-			i++;
-		}
-		
-	}
-	return 0;
-}
 
 
-// int Sort5v3(t_arrs *arrs)
-// {
-// 	while (arrs->lenA > 3)
-// 	{
-// 		if (arrs->a[0] == arrs->minA)
-// 		{	if (arrs->a[1] == arrs->maxA)
-// 			{
-				
-// 				while (arrs->lenA > 3)
-// 				{
-// 					rra(arrs);
-// 					if (arrs->a[0] != arrs->maxA)
-// 					{
-// 						pb(arrs);
-// 					}
-					
-// 				}
-					
-// 			}
-// 			else
-// 			{
-// 				while (arrs->lenA > 3)
-// 				{
-// 					ra(arrs);
-// 					if (arrs->a[0] != arrs->maxA)
-// 					{
-// 						pb(arrs);
-// 					}
-// 				}
-// 			}
-// 		}
-// 		else if (arrs->a[0] == arrs->maxA)
-// 		{
-// 			if (arrs->a[1] == arrs->minA)
-// 			{
-// 				while (arrs->lenA > 3)
-// 				{
-// 					rra(arrs);
-// 					if (arrs->a[0] != arrs->minA)
-// 					{
-// 						pb(arrs);
-// 					}
-// 				}
-					
-// 			}
-// 			else
-// 			{
-// 				while (arrs->lenA > 3)
-// 				{
-// 					ra(arrs);
-// 					if (arrs->a[0] != arrs->minA)
-// 					{
-// 						pb(arrs);
-// 					}
-// 				}
-// 			}
-// 		}
-// 		else
-// 		{
-// 			pb(arrs);
-// 		}
-// 	}
-// 	if (semiSort(arrs) != 0)
-// 	{
-// 		sa(arrs);
-// 	}
-// 	while (arrs->lenB > 0)
-// 	{			
-// 		if (arrs->b[0] < arrs->a[0] && arrs->b[0] > arrs->a[arrs->lenA - 1])
-// 			pa(arrs);
-// 		else
-// 			rotate(arrs);	
-// 	}
-// 	while (checkSort(arrs) != 0)
-// 	{
-// 		if (checkSort(arrs) == 1)
-// 			ra(arrs);
-// 		else
-// 			rra(arrs);
-// 	}
-
-// 	return (0);
-// }
 
 
 
@@ -717,30 +564,7 @@ int Sort5(t_arrs *arrs)
 	{
 		sa(arrs);
 	}
-	// while (arrs->lenB > 0)
-	// {	
-	// 	arrs->minAl = minA(arrs);
-	// 	arrs->maxAl = maxA(arrs);
-	// 	if (arrs->b[0] < arrs->a[0])
-	// 	{
-	// 		if (arrs->b[0] == arrs->minA)
-	// 		{
-	// 			pa(arrs);
-	// 		}
-	// 		else if (arrs->b[0] > arrs->a[arrs->lenA - 1])
-	// 			pa(arrs);
-	// 		else
-	// 			ra(arrs);
-			
-	// 	}
-	// 	else if (arrs->b[0] == arrs->maxA && arrs->a[0] == arrs->minAl)
-	// 	{
-	// 		pa(arrs);
-	// 	}
-	// 	else
-	// 		ra(arrs);
-	// }
-	// show_arrays(arrs);
+
 	while (arrs->lenB > 0)
 	{	
 		arrs->minAl = minA(arrs);
@@ -765,6 +589,14 @@ int Sort5(t_arrs *arrs)
 			ra(arrs);
 	}
 	// show_arrays(arrs);
+
+	// while (arrs->lenB > 0)
+	// {
+	// 	arrs->minAl = minA(arrs);
+	// 	arrs->maxAl = maxA(arrs);
+	// 	if (arrs->b[0] < arrs->a[0])
+		
+	// }
 	while (checkSort(arrs) != 0)
 	{
 		
@@ -773,100 +605,6 @@ int Sort5(t_arrs *arrs)
 		else
 			rra(arrs);
 	}
-
-	return (0);
-}
-
-
-
-int altSort(t_arrs *arrs)
-{
-	// printf("1 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-	while (semiSort(arrs) != 0)
-	{
-		if (arrs->a[0] != arrs->maxA && arrs->a[1] == arrs->minA)
-			sa(arrs);
-		if (arrs->a[0] == arrs->minA && arrs->a[1] == arrs->maxA)
-			sa(arrs);
-		
-		if (arrs->a[0] == maxA(arrs))
-		{
-			ra(arrs);
-			while (arrs->a[0] != arrs->minA)
-			{
-				pb(arrs);
-			}			
-		}
-		else if (arrs->a[0] == minA(arrs))
-		{
-			ra(arrs);
-			while (arrs->a[0] != arrs->maxA)
-			{
-				if (arrs->a[0] > arrs->a[1])
-				{
-					if (arrs->a[arrs->lenA - 1] > arrs->a[1])
-					{
-						sa(arrs);
-					}
-					else
-					{
-						pb(arrs);
-					}
-				}
-				else
-					ra(arrs);
-			}	
-		}
-		else
-			ra(arrs);
-	}
-	// printf("2 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-
-	while (semiSort(arrs) != 0)
-	{
-		
-		if (arrs->a[0] > arrs->a[1] || (arrs->a[0] == arrs->maxA && arrs->a[1] == arrs->minA))
-			sa(arrs);
-		else
-			rotate(arrs);
-		// while (i < arrs->lenA)
-		// {
-		// 	if (i ==  arrs->lenA - 1)
-		// 	{
-
-		// 	}
-		// 	arrs->a[i]
-		// }
-		
-	}
-
-
-	// printf("3 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-	while (arrs->lenB > 0)
-	{
-		if (arrs->b[0] < arrs->a[0] && arrs->b[0] > arrs->a[arrs->lenA - 1])
-			pa(arrs);
-		else
-			rotate(arrs);	
-	}
-	// printf("4 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-	LastB(arrs);
-	
-
-	// printf("5 STATE%d\n", checkSort(arrs));
-	// show_arrays(arrs);
-	while (checkSort(arrs) != 0)
-	{
-		if (checkSort(arrs) == 1)
-			ra(arrs);
-		else
-			rra(arrs);
-	}
-	// printf("6 STATE%d\n", checkSort(arrs));
 	// show_arrays(arrs);
 	return (0);
 }

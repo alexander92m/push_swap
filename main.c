@@ -81,7 +81,7 @@ int checkSort(t_arrs *arrs)
 	{
 		if (arrs->a[i] > arrs->a[i + 1])
 		{
-			if (i > arrs->lenA - i - 1)
+			if (i >= arrs->lenA - i - 1)
 				return (-1);
 			else
 				return (1);
@@ -174,8 +174,8 @@ int main(int argc, char **argv)
 		else
 			Sort5(arrs);
 	}
-	printf("if zero, that sorted %d\n", checkSort(arrs));
-	show_arrays(arrs);
+	// printf("if zero, that sorted %d\n", checkSort(arrs));
+	// show_arrays(arrs);
 	free(arrs);
 	arrs = NULL;
 	return (0);
